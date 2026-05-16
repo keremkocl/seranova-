@@ -1,26 +1,510 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ════════════════════════════════════════════════════════════════════════
+   Seranova Control Room — Premium dark theme
+   Tokens applied via .control-room scope only. The report page opts out
+   with .theme-light so PDF/print rendering stays white & professional.
+   ════════════════════════════════════════════════════════════════════════ */
+
+.control-room {
+  /* Shadcn token overrides — dark glass cards, lime accents */
+  --background:           #03110B;
+  --foreground:           #F8FAFC;
+  --card:                 rgba(255, 255, 255, 0.038);
+  --card-foreground:      #F8FAFC;
+  --popover:              rgba(5, 18, 12, 0.97);
+  --popover-foreground:   #F8FAFC;
+  --border:               rgba(255, 255, 255, 0.09);
+  --input:                rgba(255, 255, 255, 0.07);
+  --muted:                rgba(255, 255, 255, 0.04);
+  --muted-foreground:     #94A3B8;
+  --accent:               rgba(255, 255, 255, 0.05);
+  --accent-foreground:    #F8FAFC;
+  --primary:              #22C55E;
+  --primary-foreground:   #052E16;
+  --secondary:            rgba(255, 255, 255, 0.05);
+  --secondary-foreground: #F8FAFC;
+  --ring:                 rgba(34, 197, 94, 0.35);
+
+  background:
+    radial-gradient(1100px 600px at 50% -200px, rgba(34, 197, 94, 0.12), transparent 70%),
+    radial-gradient(700px 500px at 100% 100%, rgba(16, 185, 129, 0.06), transparent 65%),
+    linear-gradient(180deg, #03110B 0%, #061A11 50%, #020D08 100%);
+  color: #F8FAFC;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Subtle grid — barely visible, only at the top sweep */
+.control-room::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.008) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask-image: radial-gradient(ellipse 800px 400px at 50% 12%, rgba(0,0,0,0.4) 0%, transparent 75%);
+  mask-image:         radial-gradient(ellipse 800px 400px at 50% 12%, rgba(0,0,0,0.4) 0%, transparent 75%);
+}
+
+.control-room > * { position: relative; z-index: 1; }
+
+/* ── Surface system ──────────────────────────────────────────────────── */
+
+.surface-card {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1.25rem;
+  backdrop-filter:        blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.025) inset;
+}
+
+/* Bump shadcn Card radius to match the premium 20px+ spec. */
+.control-room [data-slot="card"] {
+  border-radius: 1.25rem;
+  --tw-ring-color: rgba(255, 255, 255, 0.06);
+}
+.control-room [data-slot="card"] [data-slot="card-header"],
+.control-room [data-slot="card"] *:first-child[data-slot="card-content"] {
+  border-top-left-radius:  1.25rem;
+  border-top-right-radius: 1.25rem;
+}
+
+.surface-elevated {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.glass-pane {
+  background:              rgba(8, 22, 16, 0.78);
+  border-color:            rgba(255, 255, 255, 0.06);
+  backdrop-filter:         blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+}
+
+.nav-active {
+  background: rgba(34, 197, 94, 0.10);
+  border: 1px solid rgba(34, 197, 94, 0.30);
+  color: #ECFCCB;
+}
+
+/* lime-glow kept as utility but rendered as a no-op tint to satisfy the
+   "no heavy glow" rule; brand text remains crisp via its base color. */
+.lime-glow {
+  text-shadow: none;
+}
+
+.premium-divider {
+  background: linear-gradient(90deg, transparent, rgba(163, 230, 53, 0.4), transparent);
+  height: 1px;
+}
+
+/* ── Legacy class auto-mapping ───────────────────────────────────────────
+   Pages were written with light-theme Tailwind classes. Inside the dashboard
+   we transparently re-route them to the dark theme so the entire surface
+   becomes premium without rewriting every component. */
+
+.control-room .bg-white {
+  background-color: rgba(255, 255, 255, 0.045);
+  border-color:     rgba(255, 255, 255, 0.08);
+  color:            #F8FAFC;
+}
+.control-room .bg-white\/95,
+.control-room .bg-white\/90,
+.control-room .bg-white\/80 { background-color: rgba(255, 255, 255, 0.045); }
+
+.control-room .bg-gray-50,
+.control-room .bg-gray-50\/30,
+.control-room .bg-gray-50\/40,
+.control-room .bg-gray-50\/50,
+.control-room .bg-gray-100,
+.control-room .bg-gray-200 { background-color: rgba(255, 255, 255, 0.035); }
+
+.control-room .text-gray-900,
+.control-room .text-gray-800 { color: #F8FAFC; }
+.control-room .text-gray-700 { color: #E2E8F0; }
+.control-room .text-gray-600 { color: #CBD5E1; }
+.control-room .text-gray-500 { color: #94A3B8; }
+.control-room .text-gray-400 { color: #64748B; }
+.control-room .text-gray-300 { color: #475569; }
+
+.control-room .border-gray-100 { border-color: rgba(255, 255, 255, 0.06); }
+.control-room .border-gray-200 { border-color: rgba(255, 255, 255, 0.10); }
+.control-room .divide-gray-100 > * + * { border-color: rgba(255, 255, 255, 0.06); }
+.control-room .divide-gray-200 > * + * { border-color: rgba(255, 255, 255, 0.10); }
+
+.control-room .hover\:bg-gray-50:hover,
+.control-room .hover\:bg-gray-100:hover { background-color: rgba(255, 255, 255, 0.06); }
+
+/* Tinted brand backgrounds (used on highlight rows) — soften for dark */
+.control-room .bg-green-50,
+.control-room .bg-green-50\/20,
+.control-room .bg-green-50\/30,
+.control-room .bg-green-50\/40 { background-color: rgba(34, 197, 94, 0.07); }
+.control-room .bg-green-100    { background-color: rgba(34, 197, 94, 0.10); }
+.control-room .bg-lime-50,
+.control-room .bg-lime-100     { background-color: rgba(163, 230, 53, 0.09); }
+.control-room .bg-blue-50,
+.control-room .bg-blue-50\/30,
+.control-room .bg-blue-50\/50  { background-color: rgba(56, 189, 248, 0.07); }
+.control-room .bg-blue-100     { background-color: rgba(56, 189, 248, 0.10); }
+.control-room .bg-amber-50,
+.control-room .bg-amber-50\/30,
+.control-room .bg-amber-50\/50 { background-color: rgba(245, 158, 11, 0.07); }
+.control-room .bg-amber-100    { background-color: rgba(245, 158, 11, 0.10); }
+.control-room .bg-orange-50,
+.control-room .bg-orange-100   { background-color: rgba(249, 115, 22, 0.09); }
+.control-room .bg-yellow-50,
+.control-room .bg-yellow-100   { background-color: rgba(234, 179, 8, 0.08); }
+.control-room .bg-red-50,
+.control-room .bg-red-50\/30,
+.control-room .bg-red-100      { background-color: rgba(239, 68, 68, 0.08); }
+.control-room .bg-sky-50,
+.control-room .bg-sky-50\/50,
+.control-room .bg-sky-100      { background-color: rgba(14, 165, 233, 0.08); }
+.control-room .bg-purple-50,
+.control-room .bg-purple-50\/30,
+.control-room .bg-purple-100   { background-color: rgba(168, 85, 247, 0.08); }
+.control-room .bg-pink-50,
+.control-room .bg-pink-100     { background-color: rgba(236, 72, 153, 0.07); }
+.control-room .bg-teal-50,
+.control-room .bg-teal-100     { background-color: rgba(20, 184, 166, 0.08); }
+
+.control-room .border-green-100,  .control-room .border-green-200  { border-color: rgba(34, 197, 94, 0.22); }
+.control-room .border-amber-100,  .control-room .border-amber-200  { border-color: rgba(245, 158, 11, 0.30); }
+.control-room .border-red-100,    .control-room .border-red-200    { border-color: rgba(239, 68, 68, 0.30); }
+.control-room .border-blue-100,   .control-room .border-blue-200   { border-color: rgba(56, 189, 248, 0.28); }
+.control-room .border-sky-100,    .control-room .border-sky-200    { border-color: rgba(14, 165, 233, 0.28); }
+.control-room .border-purple-100, .control-room .border-purple-200 { border-color: rgba(168, 85, 247, 0.28); }
+.control-room .border-lime-100,   .control-room .border-lime-200   { border-color: rgba(163, 230, 53, 0.32); }
+
+/* Semantic accent text on dark glass.
+   - emerald/lime/amber/red keep their meaning
+   - blue/sky/indigo/teal/purple/pink are decorative → routed to neutral white
+   so the surface stays monochrome (premium "no color chaos" rule). */
+.control-room .text-green-700  { color: #6EE7B7; }
+.control-room .text-green-600  { color: #34D399; }
+.control-room .text-emerald-700 { color: #6EE7B7; }
+.control-room .text-emerald-600 { color: #34D399; }
+.control-room .text-lime-700   { color: #BEF264; }
+.control-room .text-lime-600   { color: #A3E635; }
+.control-room .text-amber-700  { color: #FCD34D; }
+.control-room .text-amber-600  { color: #FBBF24; }
+.control-room .text-amber-800  { color: #FCD34D; }
+.control-room .text-red-700    { color: #FCA5A5; }
+.control-room .text-red-600    { color: #F87171; }
+.control-room .text-red-800    { color: #FECACA; }
+.control-room .text-red-900    { color: #FECDD3; }
+.control-room .text-rose-600   { color: #F87171; }
+
+/* Decorative per-metric colors → all white (monochrome metrics) */
+.control-room .text-blue-500,
+.control-room .text-blue-600,
+.control-room .text-blue-700,
+.control-room .text-blue-800,
+.control-room .text-blue-900,
+.control-room .text-sky-500,
+.control-room .text-sky-600,
+.control-room .text-sky-700,
+.control-room .text-indigo-500,
+.control-room .text-indigo-600,
+.control-room .text-indigo-700,
+.control-room .text-purple-500,
+.control-room .text-purple-600,
+.control-room .text-purple-700,
+.control-room .text-violet-500,
+.control-room .text-violet-600,
+.control-room .text-teal-500,
+.control-room .text-teal-600,
+.control-room .text-cyan-500,
+.control-room .text-cyan-600,
+.control-room .text-orange-500,
+.control-room .text-orange-600,
+.control-room .text-yellow-500,
+.control-room .text-yellow-600,
+.control-room .text-pink-500,
+.control-room .text-pink-600,
+.control-room .text-rose-500 { color: #F8FAFC; }
+
+/* And their *-500 status icon variants used inline next to metric labels */
+.control-room .text-amber-500  { color: #FBBF24; }  /* warning */
+.control-room .text-emerald-500 { color: #22C55E; } /* primary */
+.control-room .text-lime-500   { color: #A3E635; }
+.control-room .text-green-500  { color: #22C55E; }
+
+/* Growth stage badge text colors in dark mode */
+.control-room .text-lime-800   { color: #BEF264; }
+.control-room .text-lime-900   { color: #D9F99D; }
+.control-room .text-orange-700 { color: #FDBA74; }
+.control-room .text-orange-800 { color: #FED7AA; }
+.control-room .text-yellow-700 { color: #FDE047; }
+.control-room .text-yellow-800 { color: #FEF08A; }
+.control-room .text-purple-800 { color: #D8B4FE; }
+.control-room .text-purple-900 { color: #E9D5FF; }
+
+/* Soften the harsh "active" glow we previously had on the nav.
+   Replaced with a clean emerald highlight, no heavy bloom. */
+.control-room .nav-active {
+  background: rgba(34, 197, 94, 0.10);
+  border-color: rgba(34, 197, 94, 0.30);
+  box-shadow: none;
+  color: #ECFCCB;
+}
+
+/* ── Light-theme escape (Report page) ────────────────────────────────────
+   `.theme-light` rules come LAST and beat the .control-room overrides via
+   source order (equal specificity). */
+.theme-light                                    { color: #0F172A; }
+.theme-light .bg-white                          { background-color: #ffffff; border-color: #e5e7eb; color: #0F172A; }
+.theme-light .bg-white\/95,
+.theme-light .bg-white\/90                      { background-color: #ffffff; }
+.theme-light .bg-gray-50,
+.theme-light .bg-gray-50\/30,
+.theme-light .bg-gray-50\/40,
+.theme-light .bg-gray-50\/50                    { background-color: #f9fafb; }
+.theme-light .bg-gray-100                       { background-color: #f3f4f6; }
+.theme-light .text-gray-900                     { color: #111827; }
+.theme-light .text-gray-800                     { color: #1f2937; }
+.theme-light .text-gray-700                     { color: #374151; }
+.theme-light .text-gray-600                     { color: #4b5563; }
+.theme-light .text-gray-500                     { color: #6b7280; }
+.theme-light .text-gray-400                     { color: #9ca3af; }
+.theme-light .text-gray-300                     { color: #d1d5db; }
+.theme-light .border-gray-100                   { border-color: #f3f4f6; }
+.theme-light .border-gray-200                   { border-color: #e5e7eb; }
+.theme-light .divide-gray-100 > * + *           { border-color: #f3f4f6; }
+.theme-light .divide-gray-200 > * + *           { border-color: #e5e7eb; }
+.theme-light .hover\:bg-gray-50:hover,
+.theme-light .hover\:bg-gray-100:hover          { background-color: #f9fafb; }
+.theme-light .bg-green-50,
+.theme-light .bg-green-50\/20,
+.theme-light .bg-green-50\/30,
+.theme-light .bg-green-50\/40                   { background-color: rgba(220, 252, 231, 0.5); }
+.theme-light .bg-blue-50,
+.theme-light .bg-blue-50\/30,
+.theme-light .bg-blue-50\/50                    { background-color: rgba(219, 234, 254, 0.5); }
+.theme-light .bg-amber-50,
+.theme-light .bg-amber-50\/30,
+.theme-light .bg-amber-50\/50                   { background-color: rgba(254, 243, 199, 0.5); }
+.theme-light .border-green-100,
+.theme-light .border-green-200                  { border-color: #bbf7d0; }
+.theme-light .border-amber-100,
+.theme-light .border-amber-200                  { border-color: #fde68a; }
+.theme-light .text-green-700                    { color: #15803d; }
+.theme-light .text-green-600                    { color: #16a34a; }
+.theme-light .text-blue-700                     { color: #1d4ed8; }
+.theme-light .text-blue-800                     { color: #1e40af; }
+.theme-light .text-blue-900                     { color: #1e3a8a; }
+.theme-light .text-amber-700                    { color: #b45309; }
+.theme-light .text-amber-800                    { color: #92400e; }
+.theme-light .text-red-700                      { color: #b91c1c; }
+.theme-light .text-red-800                      { color: #991b1b; }
+.theme-light .text-red-900                      { color: #7f1d1d; }
+.theme-light .text-sky-700                      { color: #0369a1; }
+.theme-light .text-purple-700                   { color: #7e22ce; }
+
+/* Print: collapse the dark theme entirely. */
+@media print {
+  .control-room { background: white !important; color: #111 !important; }
+  .control-room::before { display: none !important; }
+  .glass-pane, .surface-card, .surface-elevated, .nav-active {
+    background: white !important;
+    color: #111 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 14mm;
+  }
+
+  html, body {
+    background: white !important;
+    color: #111 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  [data-print-hide],
+  .print-hidden {
+    display: none !important;
+  }
+
+  [data-print-main] {
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  .print-page {
+    box-shadow: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .print-keep,
+  .print-keep * {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .print-break-before {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  table {
+    page-break-inside: auto;
+  }
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+  thead {
+    display: table-header-group;
+  }
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
 }
