@@ -13,7 +13,7 @@ import {
   WeatherCondition,
   SensorDataSource,
   WeatherDataSource,
-} from "../src/generated/prisma/client";
+} from "@prisma/client";
 
 import {
   generateRecommendation,
