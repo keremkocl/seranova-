@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { createSensorAlert } from "@/lib/notification-engine";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 function asNumber(v: unknown): number | null {
   return typeof v === "number" && Number.isFinite(v) ? v : null;
 }

@@ -4,6 +4,9 @@ import { prisma } from "@/lib/prisma";
 import { getWeatherForField, isExternalWeatherConfigured } from "@/lib/weather-provider";
 import { createNotification } from "@/lib/notification-engine";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 export async function POST() {
   const session = await auth();
   if (!session?.user?.id) {
