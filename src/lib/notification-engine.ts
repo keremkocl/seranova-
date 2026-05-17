@@ -4,7 +4,7 @@ import type {
   NotificationType,
   NotificationSeverity,
   NotificationSource,
-} from "@/generated/prisma/client";
+} from "@prisma/client";
 import type { SensorSnapshot } from "@/lib/automation-engine";
 
 // Dedup window: avoid spamming the same alert for the same field repeatedly

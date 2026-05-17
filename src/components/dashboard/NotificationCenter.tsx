@@ -8,7 +8,7 @@ import type {
   NotificationType,
   NotificationSeverity,
   NotificationSource,
-} from "@/generated/prisma/client";
+} from "@prisma/client";
 import {
   Bell,
   CheckCircle2,

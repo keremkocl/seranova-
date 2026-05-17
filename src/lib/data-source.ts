@@ -1,4 +1,4 @@
-import type { SensorDataSource, WeatherDataSource } from "@/generated/prisma/client";
+import type { SensorDataSource, WeatherDataSource } from "@prisma/client";
 
 export type SensorSourceMeta = {
   label:   string;

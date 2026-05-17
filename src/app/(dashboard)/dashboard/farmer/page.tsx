@@ -1,4 +1,4 @@
-import { Sprout, FlaskConical, Leaf, TrendingUp, Sparkles, ArrowRight } from "lucide-react";
+import { Sprout, FlaskConical, Leaf, TrendingUp, Sparkles, ArrowRight, Activity, Zap } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
@@ -24,6 +24,20 @@ const STAGE_COLORS: Record<GrowthStage, string> = {
   FRUITING:   "bg-orange-100 text-orange-700",
   HARVEST:    "bg-yellow-100 text-yellow-700",
 };
+
+const SYSTEM_STATUS = [
+  { label: "Sulama",         status: "AI Kontrolde", badge: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30" },
+  { label: "Havalandırma",   status: "Aktif",         badge: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30" },
+  { label: "Aydınlatma",     status: "Pasif",         badge: "bg-slate-500/20 text-slate-400 border-slate-500/20"       },
+  { label: "Otomasyon Modu", status: "AI Control",   badge: "bg-lime-400/20 text-lime-300 border-lime-400/30"           },
+] as const;
+
+const AI_DECISIONS = [
+  { trigger: "Toprak nemi düşük algılandı",   action: "Sulama önerildi",                  time: "2dk önce"  },
+  { trigger: "Sıcaklık eşik değere yaklaştı", action: "Havalandırma aktif tutuluyor",      time: "8dk önce"  },
+  { trigger: "EC dengeli",                    action: "Gübreleme planı korunuyor",          time: "15dk önce" },
+  { trigger: "Sistem simülasyon modunda",     action: "Canlı izleme yapılıyor",            time: "Sürekli"   },
+] as const;
 
 function fmtDate(d: Date) {
   return new Intl.DateTimeFormat("tr-TR", { day: "numeric", month: "long", year: "numeric" }).format(d);
@@ -340,6 +354,54 @@ export default async function FarmerDashboardPage({
               </CardContent>
             </Card>
           )}
+
+          {/* ── Control Room: System Status + AI Decision Feed ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+
+            {/* System Status */}
+            <Card className="border border-white/10 bg-white/5 backdrop-blur-sm">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-semibold text-white/90 flex items-center gap-2">
+                  <Activity size={15} className="text-emerald-400" />
+                  Sistem Durumu
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <div className="grid grid-cols-2 gap-2">
+                  {SYSTEM_STATUS.map(({ label, status, badge }) => (
+                    <div key={label} className="flex items-center justify-between px-3 py-2.5 rounded-lg border bg-white/5 border-white/10">
+                      <span className="text-sm text-white/70">{label}</span>
+                      <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${badge}`}>
+                        {status}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* AI Decision Feed */}
+            <Card className="border border-white/10 bg-white/5 backdrop-blur-sm">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-semibold text-white/90 flex items-center gap-2">
+                  <Zap size={15} className="text-lime-300" />
+                  AI Karar Akışı
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0 space-y-2">
+                {AI_DECISIONS.map(({ trigger, action, time }) => (
+                  <div key={trigger} className="flex items-start gap-3 px-3 py-2.5 rounded-lg border bg-white/5 border-white/10">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-lime-400 shrink-0" />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs text-white/50 leading-none mb-0.5">{trigger}</p>
+                      <p className="text-sm text-white/85 font-medium leading-snug">{action}</p>
+                    </div>
+                    <span className="text-[10px] text-white/30 shrink-0 mt-0.5 whitespace-nowrap">{time}</span>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
         </div>
       )}
 

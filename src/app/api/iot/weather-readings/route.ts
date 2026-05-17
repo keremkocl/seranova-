@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import type { WeatherCondition } from "@/generated/prisma/client";
+import type { WeatherCondition } from "@prisma/client";
 
 const VALID_CONDITIONS = new Set<WeatherCondition>([
   "SUNNY", "CLOUDY", "RAINY", "WINDY", "STORMY",

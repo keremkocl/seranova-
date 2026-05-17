@@ -11,7 +11,7 @@ import {
 import type {
   NotificationType,
   NotificationSeverity,
-} from "@/generated/prisma/client";
+} from "@prisma/client";
 import {
   markNotificationReadAction,
   markAllNotificationsReadAction,

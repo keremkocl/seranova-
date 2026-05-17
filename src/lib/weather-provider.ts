@@ -1,4 +1,4 @@
-import type { WeatherCondition, WeatherDataSource } from "@/generated/prisma/client";
+import type { WeatherCondition, WeatherDataSource } from "@prisma/client";
 
 export interface FieldGeo {
   id:          string;
