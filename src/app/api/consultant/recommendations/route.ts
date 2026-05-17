@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 export async function GET() {
   const session = await auth();
   if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -20,7 +23,7 @@ export async function GET() {
   });
 
   return NextResponse.json(
-    recs.map((r) => ({
+    recs.map((r: (typeof recs)[number]) => ({
       id:              r.id,
       title:           r.title,
       status:          r.status,
