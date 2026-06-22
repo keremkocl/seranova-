@@ -1,37 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# 🌿 Seranova
 
-First, run the development server:
+**Yapay Zeka Destekli Akıllı Sera Yönetim Platformu**
+
+> ⚠️ Aktif geliştirme aşamasındadır. Özellikler değişmeye devam edebilir.
+
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=nextdotjs)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://typescriptlang.org)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql&logoColor=white)](https://postgresql.org)
+[![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma)](https://prisma.io)
+[![Status](https://img.shields.io/badge/status-in%20development-orange)]()
+
+</div>
+
+---
+
+## 🎯 Nedir?
+
+Seranova, sera üreticilerinin günlük kararlarını desteklemek için geliştirilen bir **"sera danışmanı"** platformudur. Donanım bağımlılığı olmadan çalışmayı hedefler — üretici verisini girer, yapay zeka tavsiye üretir, ziraat mühendisi onaylar, çiftçi uygular.
+
+> *"Sera bilgisayarı değil, sera danışmanı."*
+
+---
+
+## ✨ Planlanan Özellikler
+
+- **🌡 İklim Takibi** — Sıcaklık, nem ve CO₂ verilerinin günlük kaydı ve analizi
+- **🔔 Erken Uyarı** — Hastalık ve zararlı risklerine karşı proaktif bildirimler
+- **📊 Verim Analizi** — Geçmiş verilerle karşılaştırmalı sezon raporları
+- **🤖 AI Tavsiye** — Doğal dil tabanlı tarımsal öneri motoru
+- **👨‍🌾 Çok Kullanıcı** — Çiftçi / Ziraat Mühendisi / Admin rol hiyerarşisi
+- **📱 Mobil Uyumlu** — Responsive arayüz
+
+---
+
+## 🏗 Teknik Mimari
+seranova/
+
+├── app/                  # Next.js 15 App Router
+
+│   ├── (dashboard)/      # Korumalı kullanıcı sayfaları
+
+│   ├── api/              # REST API endpoint'leri
+
+│   └── auth/             # NextAuth kimlik doğrulama
+
+├── prisma/
+
+│   └── schema.prisma     # Veritabanı şeması
+
+├── components/           # Yeniden kullanılabilir UI bileşenleri
+
+├── lib/                  # Yardımcı fonksiyonlar ve AI entegrasyonu
+
+└── types/                # TypeScript tip tanımları
+**Stack:**
+
+| Katman | Teknoloji |
+|--------|-----------|
+| Frontend | Next.js 15, React, TypeScript, Tailwind CSS |
+| Backend | Next.js API Routes, NextAuth.js |
+| Veritabanı | PostgreSQL + Prisma ORM |
+| AI | OpenAI GPT API |
+| IoT (Planlı) | ESP32, MQTT protokolü |
+| Deploy | Vercel + Supabase |
+
+---
+
+## 🗺 Yol Haritası
+
+- [x] Proje mimarisi ve veritabanı şeması
+- [x] Temel kullanıcı kimlik doğrulama sistemi
+- [ ] Sera profil yönetimi (devam ediyor)
+- [ ] İklim verisi giriş ve görselleştirme
+- [ ] AI tavsiye motoru
+- [ ] ESP32 IoT sensör entegrasyonu
+- [ ] Erken uyarı bildirim sistemi
+- [ ] Mobil uygulama (React Native)
+
+---
+
+## 📊 Arka Plan
+
+Türkiye, 77.000+ hektar örtüaltı üretim alanıyla Avrupa'nın en büyük sera tarımı pazarlarından biri. Bu proje, küçük ve orta ölçekli sera işletmelerini (50–500 dekar) hedefliyor.
+
+Geliştirme süreci, 20'den fazla sera işletmecisiyle gerçekleştirilen saha araştırmasına dayanmaktadır.
+
+---
+
+## ⚙️ Kurulum (Geliştirici)
 
 ```bash
+git clone https://github.com/keremkocl/seranova.git
+cd seranova
+npm install
+cp .env.example .env.local
+npx prisma migrate dev
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📄 Lisans
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+[MIT](LICENSE) — Kerem Koç © 2024
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# seranova-
+<div align="center">
+<sub>Bursa Uludağ Üniversitesi · Biyosistem Mühendisliği · Geliştirme aşamasında</sub>
+</div>
